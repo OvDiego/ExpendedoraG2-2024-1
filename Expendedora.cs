@@ -70,6 +70,15 @@ namespace ExpendedoraG2_2024_1
 
 
         }
+
+        public Expendedora(bool Mantenimiento)
+
+        {
+            if (Mantenimiento== true )
+
+            Console.WriteLine("ENTRANDO EN MODO MANTENIMIENTO");
+       
+        }
         #endregion
     }
 }
