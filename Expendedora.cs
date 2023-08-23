@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.ExceptionServices;
 using System.Threading;
 
 
@@ -9,9 +10,25 @@ namespace ExpendedoraG2_2024_1
         #region Atributos
         private string marca;
         private ushort cantproductos;
+        private byte temperatura;
         private float precio;
+
+
         #endregion
 
+
+        #region Propiedades
+        public byte Temperatura { 
+            get => temperatura; 
+            set 
+                {
+                if (0< value && value < 25)
+                    temperatura = value;
+                else 
+                    temperatura = 20;
+            }
+        }
+        #endregion 
         #region Métodos
         private void Saludar()
         {
@@ -74,10 +91,18 @@ namespace ExpendedoraG2_2024_1
         public Expendedora(bool Mantenimiento)
 
         {
-            if (Mantenimiento== true )
+            Temperatura = 20;
+            if (Mantenimiento == true )
 
             Console.WriteLine("ENTRANDO EN MODO MANTENIMIENTO");
-       
+            Console.WriteLine("Cambiando temperatura");
+            LimpiarDisplay();
+            for(int i = 0; i<20; i++)
+            {
+                Temperatura++;
+               
+            }
+            Console.WriteLine("Mostrando temperatura {0} [°C]", Temperatura);
         }
         #endregion
     }
