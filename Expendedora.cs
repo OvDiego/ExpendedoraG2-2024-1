@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace ExpendedoraG2_2024_1
 {
-    internal class Expendedora
+    internal abstract class Expendedora
     {
         #region Atributos
         private string marca;
@@ -15,7 +15,6 @@ namespace ExpendedoraG2_2024_1
 
 
         #endregion
-
 
         #region Propiedades
         public byte Temperatura { 
@@ -28,13 +27,16 @@ namespace ExpendedoraG2_2024_1
                     temperatura = 20;
             }
         }
-        #endregion 
+
+        public string Marca { get => marca; set => marca = value; }
+        #endregion
+
         #region Métodos
-        private void Saludar()
+        public void Saludar()
         {
             Console.WriteLine("Bienvendo, elige un producto");
         }
-        private void LimpiarDisplay()
+        public void LimpiarDisplay()
         {
             Thread.Sleep(2000);
             Console.Clear();
@@ -75,15 +77,11 @@ namespace ExpendedoraG2_2024_1
         #region Constructor
         public Expendedora()
         {
-            marca = "AMS";
+            Marca = "AMS";
             precio = 18;
             Saludar();
             LimpiarDisplay();
-            Console.WriteLine("Marca: {0}",marca);
-            LimpiarDisplay();
-            string codigo= MostrarProducto();
-            LimpiarDisplay();
-            MostrarPrecio(codigo);
+            
 
 
         }
