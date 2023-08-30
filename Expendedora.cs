@@ -10,14 +10,14 @@ namespace ExpendedoraG2_2024_1
         #region Atributos
         private string marca;
         private ushort cantproductos;
-        private byte temperatura;
+        internal byte temperatura;
         private float precio;
 
 
         #endregion
 
         #region Propiedades
-        public byte Temperatura { 
+        public virtual byte Temperatura { 
             get => temperatura; 
             set 
                 {
@@ -29,10 +29,27 @@ namespace ExpendedoraG2_2024_1
         }
 
         public string Marca { get => marca; set => marca = value; }
+        public float Precio 
+        { 
+            get => precio;
+            set
+            {
+                if(value < 0)
+                {
+                    precio = 10;
+                }
+                else
+                {
+                    precio = value;
+                }
+
+            }
+                
+          }
         #endregion
 
         #region Métodos
-        public void Saludar()
+        public virtual void Saludar()
         {
             Console.WriteLine("Bienvendo, elige un producto");
         }
@@ -43,7 +60,7 @@ namespace ExpendedoraG2_2024_1
         }
 
         //Regresa el código
-        public string MostrarProducto()
+        public virtual string MostrarProducto()
         {
             string codigo = "";
             Console.WriteLine("3A: Doritos \n 3B: Churrumais");
@@ -55,15 +72,15 @@ namespace ExpendedoraG2_2024_1
 
         }
 
-        public void MostrarPrecio(string codigo)
+        public virtual void MostrarPrecio(string codigo)
         {
             switch (codigo)
             {
                 case "3A":
-                    Console.WriteLine("Precio:{0}", precio);
+                    Console.WriteLine("Precio:{0}", Precio);
                     break;
                 case "3B":
-                    Console.WriteLine("Precio:{0}", precio-6);
+                    Console.WriteLine("Precio:{0}", Precio-6);
                     break;
                 default:
                     Console.WriteLine("No ingresaste un producto válido");
@@ -78,7 +95,7 @@ namespace ExpendedoraG2_2024_1
         public Expendedora()
         {
             Marca = "AMS";
-            precio = 18;
+            Precio = 18;
             Saludar();
             LimpiarDisplay();
             
